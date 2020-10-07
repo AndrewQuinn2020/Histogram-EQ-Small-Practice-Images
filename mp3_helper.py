@@ -13,8 +13,11 @@ images_dir = os.path.join(script_dir, "images")
 results_dir = os.path.join(script_dir, 'results')
 test_images_dir = os.path.join(script_dir, "test_images")
 test_results_dir = os.path.join(script_dir, 'test_results')
+big_test_images_dir = os.path.join(script_dir, "big_test_images")
+big_test_results_dir = os.path.join(script_dir, 'big_test_results')
 
-subdirs = [images_dir, results_dir, test_images_dir, test_results_dir]
+subdirs = [images_dir, results_dir, test_images_dir, test_results_dir,
+           big_test_images_dir, big_test_results_dir]
 
 for subdir in subdirs:
     if not os.path.exists(subdir):
@@ -23,6 +26,8 @@ for subdir in subdirs:
 images = [os.path.join(images_dir, f) for f in os.listdir(images_dir)]
 test_images = [os.path.join(test_images_dir, f) for f in
                    os.listdir(test_images_dir)]
+test_results = [os.path.join(test_results_dir, f) for f in
+                  os.listdir(test_results_dir)]
 
 
 
@@ -60,6 +65,7 @@ def hello():
 
 
 def load_gs(img):
+    """Given a file location for the image, load the image in."""
     return np.array(Image.open(img).convert('L')).astype(int)
 
 
