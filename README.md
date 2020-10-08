@@ -1,7 +1,7 @@
 # Histogram-EQ-Small-Practice-Images
 Tiny (5x5) .bmp images for my classmates to use while trying to implement a histogram EQ.
 
-Some examples (original, very dark image on the left; post-histogram EQ on the right):
+Some examples (original, very undifferentiated image on the left; post-histogram EQ on the right):
 
 
 ![](./big_test_images/test_image_2_000.bmp)
