@@ -20,6 +20,9 @@ if __name__ == "__main__":
     hello()
 
     for image in test_images:
+        if "hist" in image:
+            print("SKIP")
+            continue
         print(image)
         im = Image.open(image)
         big_im = im.resize((round(im.size[0]*scale), round(im.size[1]*scale)))
@@ -31,6 +34,9 @@ if __name__ == "__main__":
         big_im.save(big_im_path)
 
     for image in test_results:
+        if "hist" in image:
+            print("SKIP")
+            continue
         print(image)
         im = Image.open(image)
         big_im = im.resize((round(im.size[0]*scale), round(im.size[1]*scale)), resample=Image.NEAREST)
