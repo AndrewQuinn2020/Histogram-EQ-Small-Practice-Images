@@ -1,34 +1,35 @@
 #!/usr/bin/python3
 
 import os.path
-
-from PIL import Image
-import numpy as np
 from pathlib import Path
 
-
+import numpy as np
+from PIL import Image
 
 script_dir = os.path.dirname(__file__)
 images_dir = os.path.join(script_dir, "images")
-results_dir = os.path.join(script_dir, 'results')
+results_dir = os.path.join(script_dir, "results")
 test_images_dir = os.path.join(script_dir, "test_images")
-test_results_dir = os.path.join(script_dir, 'test_results')
+test_results_dir = os.path.join(script_dir, "test_results")
 big_test_images_dir = os.path.join(script_dir, "big_test_images")
-big_test_results_dir = os.path.join(script_dir, 'big_test_results')
+big_test_results_dir = os.path.join(script_dir, "big_test_results")
 
-subdirs = [images_dir, results_dir, test_images_dir, test_results_dir,
-           big_test_images_dir, big_test_results_dir]
+subdirs = [
+    images_dir,
+    results_dir,
+    test_images_dir,
+    test_results_dir,
+    big_test_images_dir,
+    big_test_results_dir,
+]
 
 for subdir in subdirs:
     if not os.path.exists(subdir):
         os.makedirs(subdir)
 
 images = [os.path.join(images_dir, f) for f in os.listdir(images_dir)]
-test_images = [os.path.join(test_images_dir, f) for f in
-                   os.listdir(test_images_dir)]
-test_results = [os.path.join(test_results_dir, f) for f in
-                  os.listdir(test_results_dir)]
-
+test_images = [os.path.join(test_images_dir, f) for f in os.listdir(test_images_dir)]
+test_results = [os.path.join(test_results_dir, f) for f in os.listdir(test_results_dir)]
 
 
 def reveal_images():
@@ -37,13 +38,13 @@ def reveal_images():
     assert os.path.exists(test_images_dir)
 
     print("    Images in images/:")
-    for image in [os.path.join(images_dir, f) for f in
-                  os.listdir(images_dir)]:
+    for image in [os.path.join(images_dir, f) for f in os.listdir(images_dir)]:
         print("        " + image)
 
     print("    Images in test_images/:")
-    for test_image in [os.path.join(test_images_dir, f) for f in
-                       os.listdir(test_images_dir)]:
+    for test_image in [
+        os.path.join(test_images_dir, f) for f in os.listdir(test_images_dir)
+    ]:
         print("        " + test_image)
 
     return None
@@ -66,12 +67,12 @@ def hello():
 
 def load_gs(img):
     """Given a file location for the image, load the image in."""
-    return np.array(Image.open(img).convert('L')).astype(int)
+    return np.array(Image.open(img).convert("L")).astype(int)
 
 
 def save_gs(data, filename, dir=results_dir, ext=".bmp"):
     save_loc = os.path.join(dir, filename + ext)
-    im = Image.fromarray(data.astype(np.uint8), 'L')
+    im = Image.fromarray(data.astype(np.uint8), "L")
     im.save(save_loc)
     return save_loc
 
